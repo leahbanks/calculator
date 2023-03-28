@@ -13,15 +13,19 @@ const buttonValues = [
     [0, ".", "="],
   ];
 export default function App() {
-  let [calc, setCalc] = useState({
-    symbol: "",
-    number: 0,
-    result: 0,
-  });
+  let [calc, setCalc] = useState(0);
+
+  const handleClick = (e) => {
+    e.preventDefault();
+    const value = e.target.value;
+      setCalc(value)
+  }
+
+
 
     return (
         <Wrapper>
-          <Screen/>
+          <Screen value={calc}/>
           <ButtonContainer>
             {buttonValues.flat().map((button, index) => {
               return (
@@ -29,6 +33,7 @@ export default function App() {
                   key={index}
                   className={button === "=" ? "equals" : ""}
                   value={button}
+                  onClick={(e) => handleClick(e)}
                 />
               );
             })}
