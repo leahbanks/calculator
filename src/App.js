@@ -3,6 +3,7 @@ import Screen from "./components/Screen/Screen";
 import ButtonContainer from "./components/ButtonContainer/ButtonContainer";
 import Button from "./components/Button/Button";
 import './App.css'
+import { useState } from "react";
 
 const buttonValues = [
     ["AC", "+-", "%", "÷"],
@@ -12,6 +13,11 @@ const buttonValues = [
     [0, ".", "="],
   ];
 export default function App() {
+  let [calc, setCalc] = useState({
+    symbol: "",
+    number: 0,
+    result: 0,
+  });
 
     return (
         <Wrapper>
